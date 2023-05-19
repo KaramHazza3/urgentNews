@@ -20,3 +20,32 @@ and starts the Apache server in the foreground means that it will keep running a
 
 # Instructions i have been used in this Assignment
 
+# To create network
+docker network create mynetwork
+
+ # To build and run mysql
+docker build -t urgentnews-mysql .
+docker run --name urgentnews-mysql-container --network mynetwork -p 3307:3306 -d urgentnews-mysql
+
+# To build and run backend
+
+docker build -t urgentnews-backend .
+docker run --name urgentnews-backend-container --network mynetwork -p 8080:3000 -d urgentnews-backend
+
+# To build and run frontend
+
+docker build -t urgentnews-frontend .
+docker run --name urgentnews-frontend-container -p 80:80  -d urgentnews-frontend
+
+# To push the images into my repostiory
+docker tag urgentnews-mysql karam47/urgentnews-mysql
+docker push karam47/urgentnews-mysql
+
+docker tag urgentnews-backend karam47/urgentnews-backend
+docker push karam47/urgentnews-backend
+
+docker tag urgentnews-frontend karam47/urgentnews-frontend
+docker push karam47/urgentnews-frontend
+
+# My Docker Hub Repository
+https://hub.docker.com/repositories/karam47
