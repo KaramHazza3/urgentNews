@@ -20,7 +20,7 @@ and starts the Apache server in the foreground means that it will keep running a
 
 # Instructions i have been used in this Assignment
 
-# To create network
+# To create network (to allow them to communicate and interact with each other because new container is looks like a new machine)
 docker network create mynetwork
 
  # To build and run mysql
